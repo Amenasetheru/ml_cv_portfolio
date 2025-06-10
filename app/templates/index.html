@@ -1,0 +1,232 @@
+{% extends "base.html" %}
+
+{% block title %}Roméo Mendes - ML Engineer{% endblock %}
+
+{% block head %}
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+{% endblock %}
+
+{% block content %}
+
+{# --- BLOCK 1: HERO SECTION --- #}
+<section id="hero-section" class="hero-section page-content animate-fade-in-up">
+    <img src="{{ url_for('static', filename='images/amen_pic_cv.png') }}" alt="Roméo Mendes" class="profile-image">
+    <h1 class="hero-title animate-slide-in-right">Roméo Mendes</h1>
+    <p class="hero-subtitle">Machine Learning Engineer</p>
+    <div class="hero-buttons">
+        {# CV Link - Corrected path based on your input #}
+        <a href="{{ url_for('static', filename='images/CV_ML-ROMEO MENDES .pdf') }}" target="_blank" class="button-dark-luxe">
+            Download CV <i class="fas fa-download icon-ml"></i>
+        </a>
+        <a href="#contact-form-section" class="button-outline-luxe scroll-link">
+            Contact Me <i class="fas fa-envelope icon-ml"></i>
+        </a>
+    </div>
+</section>
+
+{# --- BLOCK 2: PROFESSIONAL PROFILE --- #}
+<section id="profile-section" class="container page-content animate-fade-in-up">
+    <h2 class="section-heading">Professional Profile</h2>
+    <div class="profile-details">
+        <p>Machine Learning Engineer driven by a passion for data, predictive modeling, and building intelligent solutions across a wide range of industries. Strong experience in handling large-scale data, designing ML/NLP models, optimizing pipelines, and deploying scalable solutions (API, Docker, Cloud). Comfortable working in agile environments, with strong adaptability, sharp business insight, and a talent for explaining technical concepts to non-technical stakeholders.</p>
+        <div class="contact-info">
+            <p><i class="fas fa-phone-alt icon-mr"></i> Phone: 07 83 10 70 08</p>
+            <p><i class="fas fa-envelope icon-mr"></i> Email: romeomendes1005@gmail.com</p>
+            <p><i class="fas fa-map-marker-alt icon-mr"></i> Address: HUNINGUE, France</p>
+            <p><i class="fas fa-globe-americas icon-mr"></i> Nationality: French</p>
+        </div>
+    </div>
+</section>
+
+{# --- BLOCK 3: KEY SKILLS --- #}
+<section id="skills-section" class="container page-content animate-fade-in-up">
+    <h2 class="section-heading">Key Skills</h2>
+    <div class="skills-grid">
+        {% for category, skills_list in skills.items() %}
+        <div class="skill-category">
+            <h3 class="skill-category-title">{{ category }}</h3>
+            <div class="skills-list">
+                {% for skill in skills_list %}
+                <div class="skill-item">
+                    <i class="{{ skill.icon }} skill-icon"></i>
+                    <span class="skill-name">{{ skill.name }}</span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+{# --- BLOCK 4: PROFESSIONAL EXPERIENCE --- #}
+<section id="experience-section" class="container page-content animate-fade-in-up">
+    <h2 class="section-heading">Professional Experience</h2>
+    <div class="timeline">
+        {% for job in experience %}
+        <div class="timeline-item animate-fade-in-up" style="animation-delay: {{ loop.index * 0.1 }}s;">
+            <div class="timeline-year">{{ job.year }}</div>
+            <div class="timeline-content">
+                <h3 class="timeline-title">{{ job.title }}</h3>
+                <h4 class="timeline-company">{{ job.company }}</h4>
+                <ul class="timeline-description">
+                    {% for point in job.description %}
+                    <li>{{ point }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+{# --- BLOCK 5: EDUCATION --- #}
+<section id="education-section" class="container page-content animate-fade-in-up">
+    <h2 class="section-heading">Education</h2>
+    <div class="timeline">
+        {% for edu in education %}
+        <div class="timeline-item animate-fade-in-up" style="animation-delay: {{ loop.index * 0.1 }}s;">
+            <div class="timeline-year">{{ edu.year }}</div>
+            <div class="timeline-content">
+                <h3 class="timeline-title">{{ edu.title }}</h3>
+                <h4 class="timeline-institution">{{ edu.institution }}</h4>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+{# --- BLOCK 6: CERTIFICATIONS & LANGUAGES --- #}
+<section id="certs-langs-section" class="container page-content animate-fade-in-up">
+    <div class="section-flex-wrapper">
+        <div class="flex-item">
+            <h2 class="section-heading">Certifications</h2>
+            <ul class="certification-list">
+                {% for cert in certifications %}
+                <li class="animate-fade-in-up" style="animation-delay: {{ loop.index * 0.1 }}s;">
+                    <i class="fas fa-award icon-mr"></i> {{ cert }}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="flex-item">
+            <h2 class="section-heading">Languages</h2>
+            <ul class="language-list">
+                {% for lang in languages %}
+                <li class="animate-fade-in-up" style="animation-delay: {{ loop.index * 0.1 }}s;">
+                    <i class="fas fa-language icon-mr"></i> {{ lang }}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="resume-download-button">
+        {# CV Link - Corrected path based on your input #}
+        <a href="{{ url_for('static', filename='images/CV-ROMEO MENDES1 - Suisse-English-Version .pdf') }}" target="_blank" class="button-dark-luxe">
+            Download Full Resume <i class="fas fa-file-pdf icon-ml"></i>
+        </a>
+    </div>
+</section>
+
+
+{# --- BLOCK 7: MY PROJECTS (Grid) --- #}
+<section id="projects-section" class="container page-content animate-fade-in-up">
+    <h2 class="section-title">My Projects</h2>
+    <div class="projects-grid">
+        {% for project in projects %}
+        <div class="project-item animate-fade-in-up" style="animation-delay: {{ loop.index * 0.1 }}s;">
+            <img src="{{ url_for('static', filename='images/' + project.image) }}" alt="{{ project.title }}" class="project-image">
+            <div class="project-content">
+                <h3 class="project-title">{{ project.title }}</h3>
+                <p class="project-description">{{ project.description_short }}</p>
+                <div class="project-links-container">
+                    {% if project.github_link %}
+                    <a href="{{ project.github_link }}" target="_blank" class="project-card-link-button">
+                        GitHub <i class="fab fa-github icon-ml"></i>
+                    </a>
+                    {% endif %}
+                    {% if project.demo_link %}
+                    <a href="{{ project.demo_link }}" target="_blank" class="project-card-link-button">
+                        Demo <i class="fas fa-external-link-alt icon-ml"></i>
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+{# --- BLOCK 8: CONTACT ME --- #}
+<section id="contact-form-section" class="container page-content animate-fade-in-up">
+    <div class="contact-card">
+        <h2 class="page-title">Contact Me</h2>
+        <p class="contact-intro-text">Feel free to contact me via the form below or directly by email/phone.</p>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="flash-message flash-{{ category }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST" action="{{ url_for('main.contact_submit') }}" class="contact-form">
+            {{ form.hidden_tag() }}
+
+            <div class="form-group">
+                {{ form.name.label(class="form-label") }}
+                {{ form.name(class="form-input", placeholder="Your Name") }}
+                {% if form.name.errors %}
+                    <ul class="form-errors">
+                        {% for error in form.name.errors %}<li>{{ error }}</li>{% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {{ form.email.label(class="form-label") }}
+                {{ form.email(class="form-input", placeholder="Your Email") }}
+                {% if form.email.errors %}
+                    <ul class="form-errors">
+                        {% for error in form.email.errors %}<li>{{ error }}</li>{% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {{ form.subject.label(class="form-label") }}
+                {{ form.subject(class="form-input", placeholder="Subject of your message") }}
+                {% if form.subject.errors %}
+                    <ul class="form-errors">
+                        {% for error in form.subject.errors %}<li>{{ error }}</li>{% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {{ form.message.label(class="form-label") }}
+                {{ form.message(class="form-textarea", rows="5", placeholder="Your Message") }}
+                {% if form.message.errors %}
+                    <ul class="form-errors">
+                        {% for error in form.message.errors %}<li>{{ error }}</li>{% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <div class="g-recaptcha" data-sitekey="{{ config['RECAPTCHA_PUBLIC_KEY'] }}"></div>
+            </div>
+
+            <div class="form-group">
+                {{ form.submit(class="button-dark-luxe form-submit-button") }}
+            </div>
+        </form>
+    </div>
+</section>
+
+{% endblock %}
+

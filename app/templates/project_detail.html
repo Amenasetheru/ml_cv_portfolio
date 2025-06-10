@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}{{ project.title }} | Roméo Mendes{% endblock %}
+
+{% block content %}
+<div class="container page-content project-detail-page animate-fade-in-up">
+    <a href="{{ url_for('main.projects') }}" class="back-link"><i class="fas fa-arrow-left icon-mr"></i> Back to Projects</a>
+    <h1 class="page-title project-detail-title">{{ project.title }}</h1>
+    <p class="project-detail-category">Category: {{ project.category }}</p>
+
+    <div class="project-detail-header">
+        <img src="{{ url_for('static', filename='images/' + project.image) }}" alt="{{ project.title }}" class="project-detail-image">
+    </div>
+
+    <div class="project-detail-content">
+        <p class="project-detail-long-description">{{ project.description_long }}</p>
+
+        <div class="project-technologies project-detail-tech">
+            <h3>Technologies Used:</h3>
+            {% for tech in project.technologies %}
+            <span class="tech-tag">{{ tech }}</span>
+            {% endfor %}
+        </div>
+
+        <div class="project-links">
+            {% if project.github_link %}
+            <a href="{{ project.github_link }}" target="_blank" class="button-dark-luxe project-link-button">
+                GitHub Repository <i class="fab fa-github icon-ml"></i>
+            </a>
+            {% endif %}
+            {% if project.demo_link %}
+            <a href="{{ project.demo_link }}" target="_blank" class="button-outline-luxe project-link-button">
+                Live Demo <i class="fas fa-external-link-alt icon-ml"></i>
+            </a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
