@@ -10,6 +10,59 @@ bp = Blueprint('main', __name__)
 
 # Project Data (English version, based on your CV)
 PROJECTS = [
+    # --- New LLM / Generative AI Projects ---
+    {
+        'id': 'trading-bot-rag',
+        'title': 'AI-Powered Algorithmic Trading Robot (RAG & Sentiment Analysis)',
+        'category': 'LLM / Generative AI',
+        'image': 'trading_bot_llm.jpeg', # Placeholder - Please add this image file to your static/img/ folder
+        'description_short': "AI-powered robot for trading signals using real-time news sentiment and RAG.",
+        'description_long': """
+            Developed an algorithmic trading robot leveraging AI to generate BUY/HOLD/SELL signals for financial markets based on real-time news.
+            Integrated **NewsAPI** for financial news collection (stored in SQLite), performed **LLM-driven sentiment analysis** (Google Gemini), and generated justified trading decisions.
+            Implemented a **Retrieval Augmented Generation (RAG)** system with **FAISS** for long-term memory of news articles, enhancing LLM context and reducing hallucinations.
+            **Technologies:** Python, LangChain, Google Gemini (`gemini-2.0-flash`), HuggingFaceEmbeddings, NewsAPI, SQLite, Pandas, Gradio.
+            **Deployment:** Full end-to-end deployment on Hugging Face Spaces.
+        """,
+        'technologies': ['Python', 'LangChain', 'Google Gemini', 'RAG', 'FAISS', 'NewsAPI', 'Gradio'],
+        'github_link': 'https://github.com/Amenasetheru/trading-bot-rag', # IMPORTANT: Update with your actual GitHub link
+        'demo_link': 'https://huggingface.co/spaces/Amen/trading-bot-rag' # IMPORTANT: Update with your actual HF Spaces link
+    },
+    {
+        'id': 'cv-rag-chatbot',
+        'title': 'Personal CV RAG Chatbot',
+        'category': 'LLM / Generative AI',
+        'image': 'cv_chatbot_llm.jpeg', # Placeholder - Please add this image file to your static/img/ folder
+        'description_short': "Interactive chatbot answering questions about a PDF CV using RAG.",
+        'description_long': """
+            Conceived and implemented an interactive chatbot capable of answering complex questions about a personal CV (PDF format).
+            Extracted contextual information from the PDF, generated precise and fact-based responses via an LLM (Google Gemini), and maintained conversational coherence using memory.
+            Applied **Retrieval Augmented Generation (RAG)** methodology to index and query CV content, ensuring factually accurate responses.
+            **Technologies:** Python, LangChain, Google Gemini (`gemini-2.0-flash`), PyPDFLoader, HuggingFaceEmbeddings, FAISS, Gradio.
+            **Deployment:** Full end-to-end deployment on Hugging Face Spaces.
+        """,
+        'technologies': ['Python', 'LangChain', 'Google Gemini', 'RAG', 'FAISS', 'Gradio', 'PyPDF'],
+        'github_link': 'https://github.com/Amenasetheru/cv-rag-chatbot', # IMPORTANT: Update with your actual GitHub link
+        'demo_link': 'https://huggingface.co/spaces/Amen/cv-rag-chatbot' # IMPORTANT: Update with your actual HF Spaces link
+    },
+    {
+        'id': 'banking-rag-chatbot',
+        'title': 'Banking RAG Chatbot',
+        'category': 'LLM / Generative AI',
+        'image': 'banking_chatbot_llm.jpeg', # Placeholder - Please add this image file to your static/img/ folder
+        'description_short': "Specialized chatbot providing accurate answers on banking topics with RAG.",
+        'description_long': """
+            Developed a specialized chatbot for the banking sector, designed to provide accurate answers to questions regarding financial transactions and services.
+            Enabled access to a custom banking knowledge base, efficient semantic search, and factual response generation.
+            Utilized **Retrieval Augmented Generation (RAG)** with a Vector Store for contextual information retrieval, significantly reducing LLM "hallucinations."
+            **Technologies:** Python, LangChain, Google Gemini (`gemini-2.0-flash`), Sentence-Transformers, FAISS, Gradio.
+            **Deployment:** Full end-to-end deployment on Hugging Face Spaces.
+        """,
+        'technologies': ['Python', 'LangChain', 'Google Gemini', 'RAG', 'FAISS', 'Gradio', 'Sentence-Transformers'],
+        'github_link': 'https://github.com/Amenasetheru/banking-rag-chatbot', # IMPORTANT: Update with your actual GitHub link
+        'demo_link': 'https://huggingface.co/spaces/Amen/banking-rag-chatbot' # IMPORTANT: Update with your actual HF Spaces link
+    },
+    # --- Existing Classical ML Projects ---
     {
         'id': 'sentiment-analysis',
         'title': 'Sentiment Analysis with DistilBERT and PyTorch',
@@ -19,7 +72,7 @@ PROJECTS = [
         'description_long': """
             Developed an advanced Deep Learning model using DistilBERT for sentiment analysis from online customer reviews.
             The process included meticulous text data preprocessing (tokenization, cleaning), model training with PyTorch,
-            and achieving 95% accuracy and F1-score on the test set.
+            and achieving **95% accuracy and 95% F1-score** on the test set.
             The user interface was deployed via Hugging Face Spaces for easy demonstration.
         """,
         'technologies': ['Python', 'PyTorch', 'Hugging Face', 'DistilBERT', 'NLP'],
@@ -34,8 +87,8 @@ PROJECTS = [
         'description_short': "Recommendation and sentiment analysis models for enhanced marketing efficiency.",
         'description_long': """
             Developed innovative models for product recommendation, customer retention, and sentiment analysis,
-            leveraging the power of NLP and Deep Learning. These solutions increased marketing campaign efficiency by 57%
-            and customer loyalty by 12%. Models were deployed using TensorFlow and PyTorch frameworks.
+            leveraging the power of NLP and Deep Learning. These solutions increased **marketing campaign efficiency by 57%**
+            and **customer loyalty by 12%**. Models were deployed using TensorFlow and PyTorch frameworks.
         """,
         'technologies': ['Python', 'TensorFlow', 'PyTorch', 'NLP', 'Deep Learning'],
         'github_link': 'https://github.com/Amenasetheru/Deep-Learning-Projects/blob/main/Recommender_system_with_Tensorflow_using_Amazon_Product_Reviews.ipynb',
@@ -50,7 +103,7 @@ PROJECTS = [
         'description_long': """
             Developed a Convolutional Neural Network (CNN) model for fraud detection on a large transactional dataset.
             A strong emphasis was placed on data cleaning and preprocessing, as well as handling highly imbalanced data
-            through advanced resampling techniques. The model achieved 95% accuracy in fraud detection.
+            through advanced resampling techniques. The model achieved **95% accuracy** in fraud detection.
         """,
         'technologies': ['Python', 'TensorFlow', 'CNN', 'Data Preprocessing', 'Imbalanced Data'],
         'github_link': 'https://github.com/Amenasetheru/Deep-Learning-Projects/blob/main/Project_4_Credit_Card_Fraud_Detection_with_CNN_AAH.ipynb',
@@ -274,5 +327,3 @@ def contact_submit():
             for error in errors:
                 flash(f"Error in {field.replace('_', ' ').title()}: {error}", 'error')
         return redirect(url_for('main.index', _anchor='contact-form-section'))
-
-

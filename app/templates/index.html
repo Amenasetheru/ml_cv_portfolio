@@ -10,7 +10,7 @@
 
 {# --- BLOCK 1: HERO SECTION --- #}
 <section id="hero-section" class="hero-section page-content animate-fade-in-up">
-    <img src="{{ url_for('static', filename='images/amen_pic_cv.png') }}" alt="Roméo Mendes" class="profile-image">
+    <img src="{{ url_for('static', filename='images/Amen_pic_cv.png') }}" alt="Roméo Mendes" class="profile-image">
     <h1 class="hero-title animate-slide-in-right">Roméo Mendes</h1>
     <p class="hero-subtitle">Machine Learning Engineer</p>
     <div class="hero-buttons">
@@ -128,30 +128,65 @@
 </section>
 
 
-{# --- BLOCK 7: MY PROJECTS (Grid) --- #}
+{# --- BLOCK 7: MACHINE LEARNING PROJECTS (Categorized Grid) --- #}
 <section id="projects-section" class="container page-content animate-fade-in-up">
-    <h2 class="section-title">My Projects</h2>
+    <h2 class="section-title">MACHINE LEARNING PROJECTS</h2> {# Changed title #}
+
+    {# LLM / Generative AI Projects Sub-section #}
+    <h3 class="section-heading-sub">LLM / Generative AI Projects</h3>
     <div class="projects-grid">
         {% for project in projects %}
-        <div class="project-item animate-fade-in-up" style="animation-delay: {{ loop.index * 0.1 }}s;">
-            <img src="{{ url_for('static', filename='images/' + project.image) }}" alt="{{ project.title }}" class="project-image">
-            <div class="project-content">
-                <h3 class="project-title">{{ project.title }}</h3>
-                <p class="project-description">{{ project.description_short }}</p>
-                <div class="project-links-container">
-                    {% if project.github_link %}
-                    <a href="{{ project.github_link }}" target="_blank" class="project-card-link-button">
-                        GitHub <i class="fab fa-github icon-ml"></i>
-                    </a>
-                    {% endif %}
-                    {% if project.demo_link %}
-                    <a href="{{ project.demo_link }}" target="_blank" class="project-card-link-button">
-                        Demo <i class="fas fa-external-link-alt icon-ml"></i>
-                    </a>
-                    {% endif %}
+            {# Check if the project belongs to the LLM category #}
+            {% if project.category == 'LLM / Generative AI' %}
+            <div class="project-item llm-project animate-fade-in-up" style="animation-delay: {{ loop.index * 0.1 }}s;"> {# Added llm-project class #}
+                <img src="{{ url_for('static', filename='images/' + project.image) }}" alt="{{ project.title }}" class="project-image">
+                <div class="project-content">
+                    <h3 class="project-title">{{ project.title }}</h3>
+                    <p class="project-description">{{ project.description_short }}</p>
+                    <div class="project-links-container">
+                        {% if project.github_link %}
+                        <a href="{{ project.github_link }}" target="_blank" class="project-card-link-button">
+                            GitHub <i class="fab fa-github icon-ml"></i>
+                        </a>
+                        {% endif %}
+                        {% if project.demo_link %}
+                        <a href="{{ project.demo_link }}" target="_blank" class="project-card-link-button button-dark-luxe"> {# Added button-dark-luxe for demo #}
+                            Demo <i class="fas fa-external-link-alt icon-ml"></i>
+                        </a>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
-        </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    {# Classical Machine Learning & Deep Learning Projects Sub-section #}
+    <h3 class="section-heading-sub">Classical Machine Learning & Deep Learning Projects</h3>
+    <div class="projects-grid">
+        {% for project in projects %}
+            {# Check if the project is NOT in the LLM category #}
+            {% if project.category != 'LLM / Generative AI' %}
+            <div class="project-item animate-fade-in-up" style="animation-delay: {{ loop.index * 0.1 }}s;"> {# No llm-project class for classical ML #}
+                <img src="{{ url_for('static', filename='images/' + project.image) }}" alt="{{ project.title }}" class="project-image">
+                <div class="project-content">
+                    <h3 class="project-title">{{ project.title }}</h3>
+                    <p class="project-description">{{ project.description_short }}</p>
+                    <div class="project-links-container">
+                        {% if project.github_link %}
+                        <a href="{{ project.github_link }}" target="_blank" class="project-card-link-button">
+                            GitHub <i class="fab fa-github icon-ml"></i>
+                        </a>
+                        {% endif %}
+                        {% if project.demo_link %}
+                        <a href="{{ project.demo_link }}" target="_blank" class="project-card-link-button button-dark-luxe">
+                            Demo <i class="fas fa-external-link-alt icon-ml"></i>
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
         {% endfor %}
     </div>
 </section>
@@ -229,4 +264,3 @@
 </section>
 
 {% endblock %}
-

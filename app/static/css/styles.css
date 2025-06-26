@@ -11,6 +11,12 @@
     --border-color: #f4f7f7; /* Gris plus foncé et bien visible pour les lignes de démarcation */
     --subtle-highlight: #F0F0F0; /* Pour les états de survol très légers */
 
+    /* New colors for LLM projects - subtle distinction */
+    --llm-project-bg: #F2F8FF; /* Slightly more prominent light blue for LLM project cards */
+    --llm-project-border: #D0E0FF; /* Light blue border */
+    --llm-project-text: #0A2D6B; /* Dark blue for LLM project titles/accents */
+
+
     --font-primary: 'Futura', sans-serif; /* Pour les titres et le texte proéminent */
     --font-secondary: 'Futura', sans-serif; /* Pour le corps de texte */
     --transition-speed: 0.3s; /* Transitions plus douces */
@@ -210,7 +216,7 @@ p {
     bottom: 0;
     left: 0; /* Traverser d'un bout à l'autre */
     width: 100%; /* Traverser d'un bout à l'autre */
-    height: 0px; /* Ligne plus épaisse */
+    height: 1px; /* Ligne plus épaisse */
     background-color: var(--border-color); /* Couleur de bordure plus visible */
 }
 
@@ -221,7 +227,7 @@ p {
 #experience-section { background-color: var(--block-blue-bg); }
 #education-section { background-color: var(--block-blue-bg); }
 #certs-langs-section { background-color: var(--block-blue-bg); } /* Beige clair très léger */
-#projects-section { background-color: var(--block-blue-bg); }
+#projects-section { background-color: var(--block-blue-bg); } /* Ensure projects section has its background */
 #contact-form-section { background-color: var(--block-blue-bg); }
 
 
@@ -279,17 +285,23 @@ p {
     text-transform: uppercase;
     font-weight: 550;
 }
-.section-heading {
-    font-size: 1.2em; /* Titres de sous-section plus grands */
+
+/* New style for sub-headings within sections (e.g., in Projects section) */
+.section-heading-sub {
+    font-size: 1.1em; /* Sub-section titles, slightly smaller than main section title */
     border-bottom: 0.5px solid var(--border-color);
     padding-bottom: 8px;
+    margin-top: 40px; /* Space above sub-heading */
     margin-bottom: 20px;
     letter-spacing: 0.05em;
+    color: var(--accent-color); /* Darker color for emphasis */
+    font-weight: 500;
+    text-align: left; /* Align to left within container */
 }
 
+
 /* Project Grid Section */
-/* Section Styling for SPA - Blocks */
-/* Nous ajustons le padding pour la section Projets afin qu'elle tienne sur une page */
+/* We adjust the padding for the Projects section so it fits on a page */
 #projects-section {
     background-color: var(--secondary-bg); /* Conserve la couleur de fond */
     padding: 50px 20px; /* Réduit le padding vertical de cette section (de 70px à 50px) */
@@ -305,66 +317,83 @@ p {
 }
 
 .project-item {
-    background-color: var(--secondary-bg);
-    border-radius: 4px; /* Coins légèrement arrondis */
+    background-color: var(--secondary-bg); /* Default background for all project items */
+    border-radius: 4px; /* Slightly rounded corners */
     overflow: hidden;
-    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.05); /* Ombre légère */
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.05); /* Light shadow */
     border: 0px solid var(--border-color);
     display: flex;
     flex-direction: column;
     height: 100%;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .project-item:hover {
-    transform: translateY(-2px); /* Effet de survol subtil */
-    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1); /* Ombre au survol ajustée */
+    transform: translateY(-2px); /* Subtle hover effect */
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1); /* Adjusted shadow on hover */
+}
+
+/* Specific styling for LLM projects */
+.project-item.llm-project {
+    background-color: var(--llm-project-bg); /* Distinct background color */
+    border: 1px solid var(--llm-project-border); /* Subtle border */
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.08); /* Slightly more prominent shadow */
+}
+
+.project-item.llm-project:hover {
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+    border-color: var(--llm-project-text); /* Highlight border on hover */
 }
 
 .project-image {
     width: 100%;
-    height: 110px; /* Hauteur de l'image réduite pour des cartes plus compactes */
+    height: 110px; /* Height of the image reduced for more compact cards */
     object-fit: cover;
     border-bottom: 0px solid var(--border-color);
 }
 
 .project-content {
-    padding: 15px; /* Padding interne de la carte réduit */
+    padding: 15px; /* Internal card padding reduced */
     flex-grow: 1;
     display: flex;
     flex-direction: column;
 }
 
 .project-title {
-    font-size: 0.8em; /* Taille du titre de carte ajustée */
+    font-size: 0.8em; /* Adjusted card title size */
     margin-top: 0;
-    margin-bottom: 5px; /* Marge sous le titre ajustée */
+    margin-bottom: 5px; /* Adjusted margin below title */
     color: var(--text-color);
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.04em;
 }
 
+/* LLM project title color for distinction */
+.project-item.llm-project .project-title {
+    color: var(--llm-project-text); /* Distinct color for LLM project titles */
+}
+
 .project-description {
-    font-size: 0.9em; /* Taille de la description ajustée */
+    font-size: 0.9em; /* Adjusted description size */
     color: var(--light-text);
-    margin-bottom: 10px; /* Marge sous la description ajustée */
+    margin-bottom: 10px; /* Adjusted margin below description */
     flex-grow: 1;
 }
 
 .project-links-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px; /* Espacement entre les boutons ajusté */
-    margin-top: 10px; /* Marge au-dessus des liens ajustée */
+    gap: 8px; /* Adjusted spacing between buttons */
+    margin-top: 10px; /* Adjusted margin above links */
 }
 
 .project-card-link-button {
-    font-size: 0.7em; /* Taille de la police des boutons ajustée */
+    font-size: 0.7em; /* Adjusted button font size */
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    padding: 5px 10px; /* Padding des boutons ajusté */
+    padding: 5px 10px; /* Adjusted button padding */
     border-radius: 4px;
     border: 1px solid var(--border-color);
     color: var(--accent-color);
@@ -378,13 +407,13 @@ p {
     border-color: var(--accent-color);
 }
 
-/* Responsive Design */
+/* Responsive Design for Project Grid */
 @media (max-width: 768px) {
-    /* ... autres styles ... */
+    /* ... other styles ... */
 
     /* Project Grid Responsive */
     .projects-grid {
-        grid-template-columns: 1fr; /* Une seule colonne sur mobile pour la lisibilité */
+        grid-template-columns: 1fr; /* Single column on mobile for readability */
         gap: 20px;
     }
     .project-item { padding: 12px; }
@@ -394,7 +423,7 @@ p {
     .project-links-container { gap: 5px; }
     .project-card-link-button { padding: 4px 8px; font-size: 0.65em; }
 
-    /* ... autres styles ... */
+    /* ... other styles ... */
 }
 
 .back-link {
@@ -413,7 +442,7 @@ p {
 
 .project-detail-title {
     text-align: center;
-    font-size: 2em; /* Titre de détail de projet plus grand */
+    font-size: 2em; /* Larger project detail title */
     margin-bottom: 8px;
     font-weight: 600;
     text-transform: uppercase;
@@ -507,20 +536,20 @@ p {
 /* Skills Section */
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Min-width légèrement augmenté */
-    gap: 20px; /* Espacement légèrement augmenté */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Min-width slightly increased */
+    gap: 20px; /* Slightly increased spacing */
 }
 
 .skill-category {
-    background-color: var(--block-blue-bg); /* Blanc pur pour les cartes, sur fond bleu clair */ 
-    padding: 20px; /* Padding légèrement augmenté */
+    background-color: var(--block-blue-bg); /* Pure white for cards, on light blue background */ 
+    padding: 20px; /* Slightly increased padding */
     border-radius: 6px;
     border: 0px solid var(--border-color);
     box-shadow: 0 0px 2px rgba(0, 0, 0, 0.05);
 }
 
 .skill-category-title {
-    font-size: 0.9em; /* "KEY SKILLS" et catégories, taille ajustée */
+    font-size: 0.9em; /* "KEY SKILLS" and categories, adjusted size */
     color: var(--text-color);
     margin-top: 0;
     margin-bottom: 15px;
@@ -533,7 +562,7 @@ p {
 .skills-list {
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Espacement légèrement augmenté */
+    gap: 10px; /* Slightly increased spacing */
 }
 
 .skill-item {
@@ -544,14 +573,14 @@ p {
 }
 
 .skill-icon {
-    font-size: 1.1em; /* Icône légèrement plus grande */
+    font-size: 1.1em; /* Slightly larger icon */
     color: var(--accent-color);
     min-width: 20px;
     text-align: center;
 }
 
 .skill-name {
-    font-size: 0.8em; /* Nom de compétence légèrement plus grand */
+    font-size: 0.8em; /* Slightly larger skill name */
     color: var(--text-color);
     font-weight: 300;
     text-transform: uppercase;
@@ -587,14 +616,14 @@ p {
     font-family: var(--font-primary);
     font-weight: 600;
     color: var(--accent-color);
-    font-size: 0.9em; /* Année légèrement plus grande */
+    font-size: 0.9em; /* Year slightly larger */
     margin-bottom: 3px;
     letter-spacing: 0.03em;
     text-transform: uppercase;
 }
 
 .timeline-title {
-    font-size: 0.9em; /* Titre d'expérience/éducation légèrement plus grand */
+    font-size: 0.9em; /* Experience/education title slightly larger */
     color: var(--text-color);
     margin-top: 0;
     margin-bottom: 3px;
@@ -604,7 +633,7 @@ p {
 }
 
 .timeline-company, .timeline-institution {
-    font-size: 0.85em; /* Entreprise/institution légèrement plus grande */
+    font-size: 0.85em; /* Company/institution slightly larger */
     color: var(--light-text);
     font-weight: 400;
     margin-bottom: 6px;
@@ -617,7 +646,7 @@ p {
 }
 
 .timeline-description li {
-    font-size: 0.85em; /* Items de liste légèrement plus grands */
+    font-size: 0.85em; /* List items slightly larger */
     color: var(--light-text);
     margin-bottom: 3px;
     position: relative;
@@ -655,12 +684,12 @@ p {
 }
 
 .certification-list li, .language-list li {
-    background-color: var(--block-blue-bg); /* Blanc pur pour les cartes, sur fond beige clair */
-    padding: 12px 18px; /* Padding légèrement augmenté */
+    background-color: var(--block-blue-bg); /* Pure white for cards, on light beige background */
+    padding: 12px 18px; /* Slightly increased padding */
     margin-bottom: 12px;
     border-radius: 4px;
     border: 0px solid var(--border-color);
-    font-size: 0.9em; /* Texte légèrement plus grand */
+    font-size: 0.9em; /* Slightly larger text */
     color: var(--text-color);
     display: flex;
     align-items: center;
@@ -697,7 +726,7 @@ p {
 
 .form-label {
     display: block;
-    font-size: 0.9em; /* Label légèrement plus grand */
+    font-size: 0.9em; /* Label slightly larger */
     color: var(--text-color);
     margin-bottom: 5px;
     font-weight: 500;
@@ -707,13 +736,13 @@ p {
 
 .form-input, .form-textarea {
     width: 100%;
-    padding: 10px; /* Padding légèrement augmenté */
+    padding: 10px; /* Slightly increased padding */
     border: 0px solid var(--border-color);
     border-radius: 4px;
     background-color: var(--primary-bg);
     color: var(--text-color);
     font-family: var(--font-secondary);
-    font-size: 0.9em; /* Texte des inputs légèrement plus grand */
+    font-size: 0.9em; /* Input text slightly larger */
     transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
 }
 
@@ -829,7 +858,7 @@ p {
 
     /* Project Grid Responsive */
     .projects-grid {
-        grid-template-columns: 1fr; /* Une seule colonne sur mobile */
+        grid-template-columns: 1fr; /* Single column on mobile */
         gap: 20px;
     }
     .project-item { padding: 15px; }
@@ -877,4 +906,3 @@ p {
     .section-title, .section-heading { font-size: 1.6em; }
     .project-image { height: 140px; }
 }
-
