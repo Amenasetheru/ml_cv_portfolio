@@ -32,7 +32,7 @@ PROJECTS = [
         'id': 'cv-rag-chatbot',
         'title': 'Personal CV RAG Chatbot',
         'category': 'LLM / Generative AI',
-        'image': 'cv_chatbot_llm.jpeg', # Placeholder - Please add this image file to your static/img/ folder
+        'image': 'cv_bot.jpeg', # Placeholder - Please add this image file to your static/img/ folder
         'description_short': "Interactive chatbot answering questions about a PDF CV using RAG.",
         'description_long': """
             Conceived and implemented an interactive chatbot capable of answering complex questions about a personal CV (PDF format).
@@ -49,7 +49,7 @@ PROJECTS = [
         'id': 'banking-rag-chatbot',
         'title': 'Banking RAG Chatbot',
         'category': 'LLM / Generative AI',
-        'image': 'banking_chatbot_llm.jpeg', # Placeholder - Please add this image file to your static/img/ folder
+        'image': 'bank_bot.jpeg', # Placeholder - Please add this image file to your static/img/ folder
         'description_short': "Specialized chatbot providing accurate answers on banking topics with RAG.",
         'description_long': """
             Developed a specialized chatbot for the banking sector, designed to provide accurate answers to questions regarding financial transactions and services.
