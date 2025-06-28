@@ -73,8 +73,8 @@ p {
 /* Buttons */
 .button-dark-luxe, .button-outline-luxe {
     display: inline-block;
-    padding: 0px 4px; /* Boutons plus grands */
-    border-radius: 1px;
+    padding: 0px 2px; /* Boutons plus grands */
+    border-radius: 0px;
     font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -87,7 +87,7 @@ p {
 .button-dark-luxe {
     background-color: var(--accent-color);
     color: var(--secondary-bg);
-    border: 1px solid var(--accent-color);
+    border: 0.4px solid var(--accent-color);
 }
 
 .button-dark-luxe:hover {
