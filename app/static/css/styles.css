@@ -87,7 +87,7 @@ p {
 /* New rule for icons within .button-dark-luxe and .button-outline-luxe */
 .button-dark-luxe i,
 .button-outline-luxe i {
-    font-size: 0.6em; /* Taille de l'icône réduite pour mieux s'intégrer au bouton */
+    font-size: 0.7em; /* Taille de l'icône réduite pour mieux s'intégrer au bouton */
     vertical-align: middle; /* Aide à l'alignement vertical avec le texte du bouton */
     margin-left: 5px; /* Garder l'espacement défini par icon-ml */
 }
