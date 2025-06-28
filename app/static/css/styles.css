@@ -73,8 +73,8 @@ p {
 /* Buttons */
 .button-dark-luxe, .button-outline-luxe {
     display: inline-block;
-    padding: 3px 4px; /* Boutons plus grands */
-    border-radius: 4px;
+    padding: 3px 1px; /* Boutons plus grands */
+    border-radius: 1px;
     font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 0.08em;
