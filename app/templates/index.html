@@ -14,9 +14,9 @@
     <h1 class="hero-title animate-slide-in-right">Roméo Mendes</h1>
     <p class="hero-subtitle">Machine Learning Engineer</p>
     <div class="hero-buttons">
-        {# CV Link - Corrected path based on your input #}
-        <a href="{{ url_for('static', filename='images/CV_ROMEO_MENDES_ML_AI.pdf') }}" target="_blank" class="button-dark-luxe"></a>
-            Download Full Resume <i class="fas fa-file-pdf icon-ml"></i>
+        {# CV Link - Now without icon #}
+        <a href="{{ url_for('static', filename='images/CV_ROMEO_MENDES_ML_AI.pdf') }}" target="_blank" class="button-dark-luxe">
+            Download CV
         </a>
         <a href="#contact-form-section" class="button-outline-luxe scroll-link">
             Contact Me <i class="fas fa-envelope icon-ml"></i>
@@ -120,9 +120,9 @@
         </div>
     </div>
     <div class="resume-download-button">
-        {# CV Link - Corrected path based on your input #}
-        <a href="{{ url_for('static', filename='images/CV-ROMEO MENDES1 - Suisse-English-Version .pdf') }}" target="_blank" class="button-dark-luxe">
-            Download Full Resume <i class="fas fa-file-pdf icon-ml"></i>
+        {# CV Link - Now without icon, pointing to the same main CV PDF #}
+        <a href="{{ url_for('static', filename='images/CV_ROMEO_MENDES_ML_AI.pdf') }}" target="_blank" class="button-dark-luxe">
+            Download Full Resume
         </a>
     </div>
 </section>
