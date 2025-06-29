@@ -11,8 +11,8 @@ load_dotenv()
 app = Flask(__name__)
 app.config.from_mapping(
     SECRET_KEY=os.getenv('SECRET_KEY', 'super_secret_key_fallback'),
-    RECAPTCHA_PUBLIC_KEY=os.getenv('RECAPTCHA_PUBLIC_KEY'),
-    RECAPTCHA_PRIVATE_KEY=os.getenv('RECAPTCHA_PRIVATE_KEY')
+    RECAPTCHA_PUBLIC_KEY=os.getenv('RECAPTCHA_SITE_KEY'),
+    RECAPTCHA_PRIVATE_KEY=os.getenv('RECAPTCHA_SECRET_KEY')
     )
 
 # Initialize CSRF protection
