@@ -3,7 +3,8 @@
 {% block title %}Roméo Mendes - ML Engineer{% endblock %}
 
 {% block head %}
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    {# Supprimé: Plus besoin du script reCAPTCHA #}
+    {# <script src="https://www.google.com/recaptcha/api.js" async defer></script> #}
 {% endblock %}
 
 {% block content %}
@@ -14,7 +15,7 @@
     <h1 class="hero-title animate-slide-in-right">Roméo Mendes</h1>
     <p class="hero-subtitle">Machine Learning Engineer</p>
     <div class="hero-buttons">
-        {# CV Link - Now without icon #}
+        {# CV Link #}
         <a href="{{ url_for('static', filename='images/CV_ROMEO_MENDES_ML_AI.pdf') }}" target="_blank" class="button-dark-luxe">
             Download CV
         </a>
@@ -120,7 +121,7 @@
         </div>
     </div>
     <div class="resume-download-button">
-        {# CV Link - Now without icon, pointing to the same main CV PDF #}
+        {# CV Link #}
         <a href="{{ url_for('static', filename='images/CV_ROMEO_MENDES_ML_AI.pdf') }}" target="_blank" class="button-dark-luxe">
             Download Full Resume
         </a>
@@ -130,7 +131,7 @@
 
 {# --- BLOCK 7: MACHINE LEARNING PROJECTS (Categorized Grid) --- #}
 <section id="projects-section" class="container page-content animate-fade-in-up">
-    <h2 class="section-title">MACHINE LEARNING PROJECTS</h2> {# Changed title #}
+    <h2 class="section-title">MACHINE LEARNING PROJECTS</h2>
 
     {# LLM / Generative AI Projects Sub-section #}
     <h3 class="section-heading-sub">LLM / Generative AI Projects</h3>
@@ -138,7 +139,7 @@
         {% for project in projects %}
             {# Check if the project belongs to the LLM category #}
             {% if project.category == 'LLM / Generative AI' %}
-            <div class="project-item llm-project animate-fade-in-up" style="animation-delay: {{ loop.index * 0.1 }}s;"> {# Added llm-project class #}
+            <div class="project-item llm-project animate-fade-in-up" style="animation-delay: {{ loop.index * 0.1 }}s;">
                 <img src="{{ url_for('static', filename='images/' + project.image) }}" alt="{{ project.title }}" class="project-image">
                 <div class="project-content">
                     <h3 class="project-title">{{ project.title }}</h3>
@@ -150,7 +151,7 @@
                         </a>
                         {% endif %}
                         {% if project.demo_link %}
-                        <a href="{{ project.demo_link }}" target="_blank" class="project-card-link-button button-dark-luxe"> {# Added button-dark-luxe for demo #}
+                        <a href="{{ project.demo_link }}" target="_blank" class="project-card-link-button button-dark-luxe">
                             Demo <i class="fas fa-external-link-alt icon-ml"></i>
                         </a>
                         {% endif %}
@@ -167,7 +168,7 @@
         {% for project in projects %}
             {# Check if the project is NOT in the LLM category #}
             {% if project.category != 'LLM / Generative AI' %}
-            <div class="project-item animate-fade-in-up" style="animation-delay: {{ loop.index * 0.1 }}s;"> {# No llm-project class for classical ML #}
+            <div class="project-item animate-fade-in-up" style="animation-delay: {{ loop.index * 0.1 }}s;">
                 <img src="{{ url_for('static', filename='images/' + project.image) }}" alt="{{ project.title }}" class="project-image">
                 <div class="project-content">
                     <h3 class="project-title">{{ project.title }}</h3>
@@ -209,7 +210,7 @@
             {% endif %}
         {% endwith %}
 
-        <form method="POST" action="{{ url_for('main.contact_submit') }}" class="contact-form">
+        <form method="POST" action="{{ url_for('contact_submit') }}" class="contact-form">
             {{ form.hidden_tag() }}
 
             <div class="form-group">
@@ -252,9 +253,10 @@
                 {% endif %}
             </div>
 
-            <div class="form-group">
+            {# Supprimé: Plus de div reCAPTCHA #}
+            {# <div class="form-group">
                 <div class="g-recaptcha" data-sitekey="{{ config['RECAPTCHA_PUBLIC_KEY'] }}"></div>
-            </div>
+            </div> #}
 
             <div class="form-group">
                 {{ form.submit(class="button-dark-luxe form-submit-button") }}
