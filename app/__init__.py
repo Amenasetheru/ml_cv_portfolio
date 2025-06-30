@@ -2,6 +2,7 @@ import os
 from flask import Flask, render_template, request, flash, redirect, url_for
 from dotenv import load_dotenv
 from flask_wtf.csrf import CSRFProtect
+from flask_wtf import FlaskForm # <-- AJOUTEZ CET IMPORT ICI !
 # from flask_wtf import RecaptchaField # Supprimé: Plus besoin de RecaptchaField
 from wtforms import StringField, TextAreaField, SubmitField
 from wtforms.validators import DataRequired, Email, Length
@@ -36,7 +37,7 @@ from . import routes # Imports the routes module
 app.register_blueprint(routes.bp) # Registers the blueprint
 
 # Définition du formulaire de contact mise à jour (sans RecaptchaField)
-class ContactForm(FlaskForm):
+class ContactForm(FlaskForm): # <-- 'FlaskForm' doit être importé pour être reconnu
     name = StringField('Name', validators=[DataRequired(), Length(min=2, max=100)])
     email = StringField('Email', validators=[DataRequired(), Email(), Length(max=120)])
     subject = StringField('Subject', validators=[DataRequired(), Length(min=2, max=200)])
@@ -248,4 +249,4 @@ def contact_submit():
 # Selon votre `__init__.py` fourni, `contact_submit` est bien ici.
 
 # Si vous avez un bloc 'if __name__ == "__main__":' en bas de ce fichier,
-# assurez-vous qu'il est supprimé ou commenté pour Render.
+# assurez-vous qu'il est supprimé ou commenté pour Rend
